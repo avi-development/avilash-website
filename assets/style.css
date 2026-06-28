@@ -301,15 +301,19 @@ section { padding: 96px 0; position: relative; }
     margin-bottom: 36px;
   }
   .hero-pill {
-    font-size: 11px;
-    padding: 11px 16px;
-    letter-spacing: 0.05em;
+    font-size: 10px;
+    padding: 10px 14px;
+    letter-spacing: 0.04em;
     white-space: nowrap;
   }
+  /* Force clean line break: "Achieve" on its own line, "6-7X Roi"
+     below — matches the mobile reference. Without this the browser
+     wraps mid-string at the "6-" hyphen, which looks broken. */
+  .hero-headline .hl-1 { display: block; }
   .hero-headline {
-    font-size: clamp(48px, 17vw, 80px);
-    line-height: 1.0;
-    letter-spacing: -0.03em;
+    font-size: clamp(60px, 21vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
     padding-right: 0;
     margin: 0 0 28px;
   }
@@ -352,9 +356,24 @@ section { padding: 96px 0; position: relative; }
 }
 
 @media (max-width: 420px) {
-  .hero-pill { font-size: 10px; padding: 10px 14px; }
-  .hero-headline { font-size: clamp(44px, 15vw, 64px); margin-bottom: 22px; }
-  .hero-photo-mobile { max-width: 80%; max-height: 360px; margin-bottom: 22px; }
+  .hero-pill {
+    font-size: 9px;
+    padding: 9px 12px;
+    letter-spacing: 0.03em;
+  }
+  .hero-logo-img { height: 36px; }
+  .hero-headline {
+    /* Bigger on phones so "Achieve" fills ~75% of the available
+       width like the reference, instead of looking shrunken. */
+    font-size: clamp(58px, 22vw, 90px);
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+  .hero-photo-mobile {
+    max-width: 88%;
+    max-height: 460px;
+    margin-bottom: 24px;
+  }
 }
 
 /* ─── Display headings ───────────────────────────────────── */
