@@ -973,6 +973,35 @@ section { padding: 96px 0; position: relative; }
   letter-spacing: -0.04em;
 }
 
+/* ─── Slide 2 — Avilash continues on right (matches deck) ──
+   Deck slides 1 AND 2 both anchor Avilash to the right edge.
+   Photo is absolutely positioned so it floats independently of
+   the .who-grid; text content is constrained so the photo
+   doesn't overlap it. */
+.slide-2 { position: relative; overflow: hidden; }
+.slide-2-photo {
+  position: absolute; bottom: 0; right: -30px;
+  width: auto; height: 560px; object-fit: contain;
+  z-index: 0; pointer-events: none;
+}
+.slide-2-grid { position: relative; z-index: 1; }
+.slide-2-grid > div:nth-child(2) {
+  /* Constrain the body+VM column so Avilash on the right has
+     breathing room and doesn't overlap the text. */
+  max-width: 560px;
+}
+@media (max-width: 1100px) {
+  .slide-2-photo { height: 420px; right: -50px; }
+  .slide-2-grid > div:nth-child(2) { max-width: 420px; }
+}
+@media (max-width: 820px) {
+  /* On phones the photo would crowd the text — hide it and let
+     the section be text-only. The hero photo on Slide 1 already
+     anchors the face memory for the rest of the page. */
+  .slide-2-photo { display: none; }
+  .slide-2-grid > div:nth-child(2) { max-width: none; }
+}
+
 /* ─── Slide 5 — image-based icons cropped from the deck ───
    Using the deck PNG crops directly is more faithful than
    trying to recreate the SEO magnifier, hashtag, W globe and
