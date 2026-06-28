@@ -153,10 +153,13 @@ section { padding: 96px 0; position: relative; }
   pointer-events: none;
 }
 
-.hero-photo-img {
-  /* Anchored to the viewport's right edge, full hero height.
-     object-position bottom-right keeps the feet planted and lets
-     the head sit at the top of the section. */
+/* Two-image approach so the portrait can sit in two different
+   places without CSS gymnastics:
+   - .hero-photo-desktop: absolute to viewport's right edge (≥821px)
+   - .hero-photo-mobile: in DOM flow between headline and subtitle (≤820px)
+   Same file path, so the browser caches and serves the second one
+   instantly. */
+.hero-photo-desktop {
   position: absolute;
   right: 0; bottom: 0;
   height: 100%;
@@ -167,6 +170,7 @@ section { padding: 96px 0; position: relative; }
   z-index: 1;
   pointer-events: none;
 }
+.hero-photo-mobile { display: none; }
 
 .hero-content {
   position: relative; z-index: 2;
@@ -309,17 +313,18 @@ section { padding: 96px 0; position: relative; }
     padding-right: 0;
     margin: 0 0 28px;
   }
-  /* Photo moves INTO the flow on mobile — centered, sits between
-     headline and subtitle as in the reference. */
-  .hero-photo-img {
-    position: relative;
+  /* Hide the desktop absolute portrait; mobile portrait sits in
+     DOM flow between headline and subtitle. */
+  .hero-photo-desktop { display: none; }
+  .hero-photo-mobile {
+    display: block;
     width: auto;
     max-width: 78%;
     max-height: 420px;
     height: auto;
     margin: 0 auto 28px;
+    object-fit: contain;
     object-position: bottom center;
-    display: block;
   }
   .hero-sub {
     padding-right: 0;
@@ -349,7 +354,7 @@ section { padding: 96px 0; position: relative; }
 @media (max-width: 420px) {
   .hero-pill { font-size: 10px; padding: 10px 14px; }
   .hero-headline { font-size: clamp(44px, 15vw, 64px); margin-bottom: 22px; }
-  .hero-photo-img { max-width: 80%; max-height: 360px; margin-bottom: 22px; }
+  .hero-photo-mobile { max-width: 80%; max-height: 360px; margin-bottom: 22px; }
 }
 
 /* ─── Display headings ───────────────────────────────────── */

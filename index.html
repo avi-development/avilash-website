@@ -7,7 +7,7 @@
   <meta name="description" content="A+ Marketing — full-stack digital growth led by Avilash Chakraborty. Marketing strategy, performance ads, web development, CRM, automation, and analytics under one roof." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="/assets/style.css?v=9" />
+  <link rel="stylesheet" href="/assets/style.css?v=10" />
 </head>
 <body>
 
@@ -30,7 +30,8 @@
 
   <!-- ═══════════ SLIDE 1 — HERO ═══════════ -->
   <section class="hero">
-    <img class="hero-photo-img" src="/assets/avilash.webp" alt="Avilash Chakraborty" loading="eager" />
+    <!-- Desktop portrait: absolute-anchored to viewport's right edge. -->
+    <img class="hero-photo-desktop" src="/assets/avilash.webp" alt="Avilash Chakraborty" loading="eager" />
     <div class="hero-content">
       <div class="hero-top">
         <!-- Logo: swap /assets/logo.png with your own file (PNG or SVG,
@@ -41,6 +42,10 @@
       </div>
 
       <h1 class="hero-headline">Achieve 6-7X Roi</h1>
+
+      <!-- Mobile portrait: sits in DOM flow between headline and subtitle
+           per the mobile reference. Hidden on desktop via CSS. -->
+      <img class="hero-photo-mobile" src="/assets/avilash.webp" alt="" aria-hidden="true" loading="eager" />
 
       <div class="hero-sub">
         <svg class="star" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
