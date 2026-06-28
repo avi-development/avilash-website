@@ -955,3 +955,59 @@ section { padding: 96px 0; position: relative; }
 /* Compensate for the sticky nav so absolute slide-pills don't
    sit under it. */
 .sec-blue, .sec-cream, .final-cta { isolation: isolate; }
+
+/* ─── Slide 2 — "Who We Are" asymmetric headline ──────────
+   Deck shows "Who We" at roughly 40% the size of "Are",
+   so the typographic hierarchy is dramatic, not balanced. */
+.slide-2-title {
+  font-size: clamp(80px, 16vw, 220px);
+  line-height: 0.92;
+  margin: 0;
+}
+.slide-2-title .ww-small {
+  display: inline-block; font-size: 0.45em; line-height: 1;
+  letter-spacing: -0.02em; margin-bottom: 4px;
+}
+.slide-2-title .ww-big {
+  display: inline-block; font-size: 1em; line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+/* ─── Slide 5 — image-based icons cropped from the deck ───
+   Using the deck PNG crops directly is more faithful than
+   trying to recreate the SEO magnifier, hashtag, W globe and
+   ChatGPT knot in SVG. Blue background bakes into the section. */
+.approach-cell .ico-img {
+  width: auto; height: 110px; margin: 0 auto 18px;
+  display: block; max-width: 100%;
+}
+@media (max-width: 640px) {
+  .approach-cell .ico-img { height: 76px; }
+}
+
+/* ─── Slide 11 — icons RIGHT side of each row ─────────────
+   Deck puts the outlined icon on the right of each "EXPANDING /
+   DEEPENING / SCALING" block, not the left. Swap the grid so
+   text takes the 1fr and icon sits in a fixed-width right column. */
+.next-row {
+  grid-template-columns: 1fr 140px;
+}
+.next-row .nx-img {
+  width: 100%; max-width: 140px; height: auto;
+  align-self: start;
+}
+@media (max-width: 640px) {
+  .next-row { grid-template-columns: 1fr 80px; gap: 16px; }
+  .next-row .nx-img { max-width: 80px; }
+}
+
+/* ─── Slide 3 — cream/orange flower bottom-right ────────── */
+.slide-3 { position: relative; }
+.slide-3-flower {
+  position: absolute; bottom: 40px; right: 60px;
+  width: 110px; height: auto; z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 820px) {
+  .slide-3-flower { width: 70px; bottom: 24px; right: 24px; }
+}
