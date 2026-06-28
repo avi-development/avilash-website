@@ -991,8 +991,68 @@ section { padding: 96px 0; position: relative; }
 /* Tighten Slide 2 padding so the section reads as one screen
    rather than scrolling forever. The deck slide is a single
    16:9 frame; we don't need 96px×2 of vertical breathing room. */
-.slide-2 { padding: 72px 0; }
-@media (max-width: 640px) { .slide-2 { padding: 48px 0; } }
+.slide-2 { padding: 60px 0; }
+@media (max-width: 640px) { .slide-2 { padding: 40px 0; } }
+
+/* Slide 2 layout — deck-faithful 2-column with footer rows ──
+   Left column: headline top + "Presented by" footer at bottom
+   (mirrors the deck which carries the same footer info as Slide 1).
+   Right column: body paragraph + VISION/MISSION + "Contact Us-"
+   at the bottom. Both columns use flex+space-between so the
+   bottom footer rows are pinned to the section's lower edge —
+   this fills the section vertically and kills the awkward empty
+   space the previous layout left under the headline.
+   Min-height keeps the section from collapsing too short on
+   tall viewports, and tied to the photo height so Avilash on
+   the right anchors the slide's vertical rhythm. */
+.slide-2-layout {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  min-height: 580px;
+  align-items: stretch;
+}
+.s2-left, .s2-right {
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+.s2-body {
+  margin: 0; font-size: 16px; line-height: 1.55;
+}
+.slide-2 .vm-grid {
+  margin-top: 0; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+}
+.slide-2 .vm-grid > div {
+  border-left: 2px solid rgba(255,255,255,0.4);
+  padding-left: 16px;
+}
+.slide-2 .vm-grid h3 {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cream);
+  margin: 0 0 10px;
+}
+.slide-2 .vm-grid p {
+  color: rgba(255,255,255,0.9); font-size: 12.5px;
+  line-height: 1.55; margin: 0;
+}
+.s2-footer, .s2-contact {
+  font-size: 12px; color: rgba(255,255,255,0.85);
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+}
+.s2-contact { text-align: right; }
+.s2-footer .label, .s2-contact .label {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  opacity: 0.7; margin-bottom: 4px;
+}
+@media (max-width: 900px) {
+  .slide-2-layout {
+    grid-template-columns: 1fr; min-height: auto; gap: 32px;
+  }
+  .s2-contact { text-align: left; }
+}
 
 /* ─── Slide 2 — Avilash continues on right (matches deck) ──
    Deck slides 1 AND 2 both anchor Avilash to the right edge.
