@@ -303,17 +303,22 @@ section { padding: 96px 0; position: relative; }
     margin: 0 0 28px;
   }
   /* Hide the desktop absolute portrait; mobile portrait sits in
-     DOM flow between headline and subtitle. */
+     DOM flow between headline and subtitle.
+
+     CROP STRATEGY: source photo (avilash.webp) is full-body
+     head-to-feet. Reference shows head-to-hands-in-pockets only
+     (top ~75% of the photo). Use a square-ish container with
+     object-fit: cover + object-position: top to clip the bottom
+     25% — face stays centred, legs disappear. */
   .hero-photo-desktop { display: none; }
   .hero-photo-mobile {
     display: block;
-    width: auto;
-    max-width: 78%;
-    max-height: 420px;
-    height: auto;
-    margin: 0 auto 28px;
-    object-fit: contain;
-    object-position: bottom center;
+    width: 78%;
+    max-width: 300px;
+    height: 300px;
+    margin: 0 auto 24px;
+    object-fit: cover;
+    object-position: center top;
   }
   .hero-sub {
     padding-right: 0;
@@ -355,9 +360,10 @@ section { padding: 96px 0; position: relative; }
     margin-bottom: 24px;
   }
   .hero-photo-mobile {
-    max-width: 88%;
-    max-height: 460px;
-    margin-bottom: 24px;
+    width: 80%;
+    max-width: 270px;
+    height: 280px;
+    margin-bottom: 22px;
   }
 }
 
