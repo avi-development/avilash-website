@@ -51,15 +51,20 @@
   .hero .rule,.hero .h-foot{display:none}   /* baked into desktop bg */
 
   /* ---------- WHO WE ARE ---------- */
+  /* Sticky bg behind keeps the hero image (with Avilash on the right)
+     pinned, so the WWA text overlays the same backdrop. Constrain the
+     content to the LEFT half so it never runs over Avilash's face,
+     and push the whole block lower in the section so it sits below
+     the face vertically too. */
   .wwa{display:flex;align-items:flex-start}
-  .wwa .wrap{max-width:1280px;margin:0 auto;padding:13vw 6.6% 10vw;width:100%}
-  .wwa .grid{display:grid;grid-template-columns:auto 1fr;gap:1.4vw 3vw;align-items:center;max-width:62%}
+  .wwa .wrap{max-width:1280px;margin:0 auto;padding:42vh 6.6% 8vh;width:100%}
+  .wwa .grid{display:grid;grid-template-columns:auto 1fr;gap:1.4vw 3vw;align-items:center;max-width:50%}
   .wwa h2{font-family:'Poppins';font-weight:800;letter-spacing:-.02em;line-height:.84}
   .wwa h2 .sm{display:block;font-size:3vw;font-weight:700}
   .wwa h2 .lg{display:block;font-size:5.6vw}
-  .wwa .lead{font-size:1vw;line-height:1.5;font-weight:500;color:#eef3ff}
-  .wwa hr{border:none;height:1px;background:rgba(255,255,255,.45);margin:1.8vw 0;max-width:62%}
-  .wwa .vm{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;max-width:62%}
+  .wwa .lead{font-size:1vw;line-height:1.5;font-weight:500;color:#eef3ff;max-width:46ch}
+  .wwa hr{border:none;height:1px;background:rgba(255,255,255,.45);margin:1.8vw 0;max-width:50%}
+  .wwa .vm{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;max-width:50%}
   .wwa .vm .col.mission{padding-left:3vw;border-left:1px solid rgba(255,255,255,.45)}
   .wwa .vm h4{font-family:'Poppins';font-weight:700;font-size:1.25vw;color:var(--gold);letter-spacing:.04em;margin-bottom:.7vw}
   .wwa .vm p{font-size:.8vw;line-height:1.5;color:#eaf0ff}
