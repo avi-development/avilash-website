@@ -1,539 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avilash Chakraborty (A+ Marketing) — Achieve 6-7X Roi</title>
-  <meta name="description" content="A+ Marketing — full-stack digital growth led by Avilash Chakraborty. Marketing strategy, performance ads, web development, CRM, automation, and analytics under one roof." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="/assets/style.css?v=13" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avilash Chakraborty — Digital Marketing & Lead Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     - ONE fixed background (your exact image), pinned.
+     - Logo + "Request My Custom Strategy" = FIXED top bar (never moves).
+     - ONLY the inner text (hero headline+sub, who-we-are heading+para
+       +vision+mission) animates IN FROM THE RIGHT to its placeholder.
+     Assets: hero-desktop.webp , hero-mobile.webp , logo-white.png
+     ============================================================ */
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--gold:#eab347;--ink:#0c1330;--b1:#2155f0;--b2:#1a3fc8}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--b2);line-height:1;color:#fff;overflow-x:hidden}
+  a{text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .btn{font-family:'Poppins';font-weight:700;font-size:.9vw;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--ink);background:#fff;padding:.92vw 1.75vw;border-radius:40px;white-space:nowrap;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .star{flex:0 0 auto;color:var(--gold)}
+  .m-br{display:none}
+
+  /* ---------- FIXED TOP BAR (logo + button) ---------- */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;padding:1.7vw 6.6%}
+  .topbar .logo-img{height:clamp(34px,3.7vw,54px);width:auto}
+
+  /* ---------- pinned fixed background ---------- */
+  .stage{position:relative}
+  .stage-bg{position:sticky;top:0;height:100vh;overflow:hidden;z-index:0;
+    background:url('hero-desktop.webp') right center / cover no-repeat,
+               linear-gradient(135deg,var(--b1),var(--b2))}
+  .layers{position:relative;z-index:2;margin-top:-100vh}
+  .screen{position:relative;min-height:100vh}
+
+  /* ---------- HERO ---------- */
+  .hero .h-title{position:absolute;left:6.6%;top:19vw;
+    font-family:'Poppins';font-weight:800;font-size:6.4vw;letter-spacing:-.02em;white-space:nowrap}
+  .hero .h-sub{position:absolute;left:6.6%;top:26vw;display:flex;align-items:center;gap:.9vw;
+    font-weight:700;font-size:1.25vw;text-transform:uppercase}
+  .hero .h-sub .star{width:1.75vw;height:1.75vw}
+  .hero .rule,.hero .h-foot{display:none}   /* baked into desktop bg */
+
+  /* ---------- WHO WE ARE ---------- */
+  .wwa{display:flex;align-items:flex-start}
+  .wwa .wrap{max-width:1280px;margin:0 auto;padding:13vw 6.6% 10vw;width:100%}
+  .wwa .grid{display:grid;grid-template-columns:auto 1fr;gap:1.4vw 3vw;align-items:center;max-width:62%}
+  .wwa h2{font-family:'Poppins';font-weight:800;letter-spacing:-.02em;line-height:.84}
+  .wwa h2 .sm{display:block;font-size:3vw;font-weight:700}
+  .wwa h2 .lg{display:block;font-size:5.6vw}
+  .wwa .lead{font-size:1vw;line-height:1.5;font-weight:500;color:#eef3ff}
+  .wwa hr{border:none;height:1px;background:rgba(255,255,255,.45);margin:1.8vw 0;max-width:62%}
+  .wwa .vm{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;max-width:62%}
+  .wwa .vm .col.mission{padding-left:3vw;border-left:1px solid rgba(255,255,255,.45)}
+  .wwa .vm h4{font-family:'Poppins';font-weight:700;font-size:1.25vw;color:var(--gold);letter-spacing:.04em;margin-bottom:.7vw}
+  .wwa .vm p{font-size:.8vw;line-height:1.5;color:#eaf0ff}
+  .wwa .foot{display:none}
+  /* desktop footer — bg is now clean, so render Presented by + Contact as a FIXED bar */
+  .botbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;
+    justify-content:space-between;align-items:flex-end;gap:4vw;padding:0 6.6% 2.4vw}
+  .botbar .l{font-size:.95vw;line-height:1.55;letter-spacing:.02em}
+  .botbar .l b{display:block;font-weight:700;font-size:1.1vw;margin-top:.45vw;letter-spacing:.03em}
+  .botbar .r{font-size:.95vw;line-height:1.55;text-align:right}
+  .botbar .r b{display:block;font-weight:700;font-size:1.1vw;margin-top:.4vw}
+  .botbar::before{content:'';position:absolute;left:6.6%;right:6.6%;top:-1.8vw;bottom:auto;height:1px;background:rgba(255,255,255,.4)}
+
+  /* ---------- ANIMATION: text slides IN FROM RIGHT (right -> left) ---------- */
+  .anim{opacity:0;transform:translateX(130px);
+    transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .anim.in{opacity:1;transform:none}
+  .hero .h-title.anim{transition-delay:.05s}
+  .hero .h-sub.anim{transition-delay:.22s}
+  .wwa .grid.anim{transition-delay:.04s}
+  .wwa .vm .col.mission.anim{transition-delay:.18s}
+  .wwa .vm .col.vision.anim{transition-delay:.30s}
+
+  /* ============================================================ MOBILE ============================================================ */
+  @media (max-width:767px){
+    .m-br{display:inline}
+    .stage-bg{background:url('hero-mobile.webp') center bottom / cover no-repeat,
+                         linear-gradient(160deg,var(--b1),var(--b2))}
+
+    .topbar{padding:2.2vh 6%}
+    .topbar .logo-img{height:clamp(30px,6.4vw,40px)}
+    .btn{font-size:clamp(7px,2vw,11px);padding:1.9vw 3.2vw}
+
+    /* hero = your Image 2 */
+    .hero .h-title{position:absolute;left:6%;right:6%;top:20%;
+      font-size:clamp(34px,11.5vw,56px);line-height:1;white-space:normal}
+    .hero .h-sub{position:absolute;left:6%;right:6%;top:76%;font-size:clamp(10px,2.7vw,14px);gap:2.2vw;line-height:1.32}
+    .hero .h-sub .star{width:clamp(16px,4.6vw,22px);height:clamp(16px,4.6vw,22px)}
+    .hero .rule{display:block;position:absolute;left:6%;right:6%;top:85.5%;height:1px;background:rgba(255,255,255,.55)}
+    .hero .h-foot{display:flex;position:absolute;left:6%;right:6%;top:89%;justify-content:space-between;align-items:flex-start;gap:3vw}
+    .hero .h-foot .l{font-size:clamp(8px,2.1vw,12px);line-height:1.45}
+    .hero .h-foot .l b{display:block;font-weight:700}
+    .hero .h-foot .r{font-size:clamp(8px,2.3vw,13px);text-align:right}
+    .hero .h-foot .r b{display:block;font-weight:700;margin-top:.6vw}
+
+    /* who we are — intro up top, MISSION/VISION dropped to the very bottom */
+    .wwa{min-height:100vh;display:flex;align-items:stretch;padding:0}
+    .wwa .wrap{display:flex;flex-direction:column;min-height:100vh;padding:9.5vh 6% 18vh;width:100%}
+    .wwa .grid{grid-template-columns:1fr;gap:0;max-width:none}
+    .wwa h2 .sm{font-size:clamp(16px,5.4vw,26px)}
+    .wwa h2 .lg{font-size:clamp(30px,10vw,52px)}
+    .wwa hr{max-width:none;margin:1.6vh 0}
+    .wwa .lead{font-size:clamp(11px,3vw,14px);line-height:1.4;max-width:82%;margin-top:1.4vh}
+    .wwa .vm{grid-template-columns:1fr;max-width:none;gap:0;margin-top:auto}
+    .wwa .vm .col{margin-top:2vh}
+    .wwa .vm .col.mission{order:-1;padding-left:0;border-left:none}
+    .wwa .vm h4{font-size:clamp(13px,3.9vw,18px);margin-bottom:.8vh}
+    .wwa .vm p{font-size:clamp(10px,2.7vw,13px);line-height:1.4;max-width:90%}
+
+    /* fixed bottom bar (presented + contact) */
+    .botbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;
+      justify-content:space-between;align-items:flex-end;gap:4vw;padding:0 6% 2.4vh}
+    .botbar::before{display:none}
+    .botbar .l{font-size:clamp(8px,2.2vw,11px);line-height:1.45}
+    .botbar .l b{display:block;font-weight:700}
+    .botbar .r{font-size:clamp(8px,2.4vw,12px);text-align:right}
+    .botbar .r b{display:block;font-weight:700;margin-top:.5vh}
+    .wwa .foot .l b{display:block;font-weight:700}
+    .wwa .foot .l.r{text-align:left}
+  }
+
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.anim{opacity:1;transform:none;transition:none}}
+</style>
 </head>
 <body>
 
-  <!-- Minimal nav (deck has none — kept as a small text strip so
-       Case Studies and Contact can be reached without a footer). -->
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand" aria-label="A+ Marketing home">
-        <span class="badge">A<sup>+</sup></span>
-        <span class="nb-name">Avilash<br>Chakraborty</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="/" class="active">Home</a>
-        <a href="/case-studies/">Case Studies</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <a href="/contact/" class="nav-cta">Request my custom strategy</a>
-    </div>
-  </header>
+<div class="stage">
+  <div class="stage-bg"></div>
 
-  <!-- ═══════════ SLIDE 1 — HERO ═══════════ -->
-  <section class="hero">
-    <!-- Desktop portrait: absolute-anchored to viewport's right edge. -->
-    <img class="hero-photo-desktop" src="/assets/avilash.webp" alt="Avilash Chakraborty" loading="eager" />
-    <div class="hero-content">
-      <div class="hero-top">
-        <!-- Logo: swap /assets/logo.png with your own file (PNG or SVG,
-             transparent background recommended). Currently shows the
-             cropped deck logo as a placeholder. -->
-        <img class="hero-logo-img" src="/assets/logo.png" alt="A+ Marketing — Avilash Chakraborty" />
-        <a href="/contact/" class="cta-pill hero-pill">REQUEST MY CUSTOM STRATEGY</a>
-      </div>
+  <!-- FIXED TOP BAR (logo + button) — same place always -->
+  <div class="topbar">
+    <img class="logo-img" src="logo-white.png" alt="Avilash Chakraborty">
+    <a class="btn" href="https://wa.me/917718569194">Request My Custom Strategy</a>
+  </div>
 
-      <h1 class="hero-headline"><span class="hl-1">Achieve</span> <span class="hl-2">6-7X Roi</span></h1>
+  <div class="layers">
 
-      <!-- Mobile portrait: sits in DOM flow between headline and subtitle
-           per the mobile reference. Hidden on desktop via CSS. -->
-      <img class="hero-photo-mobile" src="/assets/avilash.webp" alt="" aria-hidden="true" loading="eager" />
-
-      <div class="hero-sub">
-        <svg class="star" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
-          <g transform="translate(20 20)">
-            <ellipse cx="0" cy="-13" rx="3" ry="7"/>
-            <ellipse cx="0" cy="13" rx="3" ry="7"/>
-            <ellipse cx="13" cy="0" rx="7" ry="3"/>
-            <ellipse cx="-13" cy="0" rx="7" ry="3"/>
-            <ellipse cx="9" cy="-9" rx="3" ry="7" transform="rotate(45 9 -9)"/>
-            <ellipse cx="-9" cy="-9" rx="3" ry="7" transform="rotate(-45 -9 -9)"/>
-            <ellipse cx="9" cy="9" rx="3" ry="7" transform="rotate(-45 9 9)"/>
-            <ellipse cx="-9" cy="9" rx="3" ry="7" transform="rotate(45 -9 9)"/>
-          </g>
-        </svg>
-        <span>UNLOCK YOUR BUSINESS GROWTH WITH END-TO-END MARKETING &amp; TECH SOLUTIONS</span>
-      </div>
-
-      <div class="hero-divider"></div>
-
-      <div class="hero-bottom">
-        <div class="hb-left">
-          <div class="hb-label">Presented by :</div>
-          <div class="hb-text">AVILASH CHAKRABORTY (A+MARKETING) -<br/>DIGITAL MARKETING AND LEAD GENERATION</div>
-        </div>
-        <div class="hb-right">
-          <div class="hb-label">Contact Us-</div>
-          <div class="hb-text">+91 7718569194</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ SLIDE 2 — WHO WE ARE ═══════════ -->
-  <section class="sec-blue slide-2">
-    <a href="/contact/" class="cta-pill slide-pill">Request my custom strategy</a>
-    <img class="slide-2-photo" src="/assets/avilash.webp" alt="" aria-hidden="true" />
-    <div class="wrap">
-      <div class="slide-2-layout">
-        <!-- Left column: headline at top, deck footer at bottom -->
-        <div class="s2-left">
-          <h2 class="who-title slide-2-title"><span class="ww-small">Who We</span><br/><span class="ww-big">Are</span></h2>
-          <div class="s2-footer">
-            <div class="label">Presented by :</div>
-            <div>AVILASH CHAKRABORTY (A+MARKETING) -<br/>DIGITAL MARKETING AND LEAD GENERATION</div>
-          </div>
-        </div>
-
-        <!-- Right column: body + VM stack -->
-        <div class="s2-right">
-          <p class="lead on-dark s2-body">
-            We are a full-stack digital growth team led by Avilash Chakraborty, dedicated to helping
-            businesses scale using strategic marketing, smart technology, and actionable data. From
-            startups to established brands, we build tailored solutions that deliver real results —
-            not just reports.
-          </p>
-          <div class="vm-grid">
-            <div>
-              <h3>VISION</h3>
-              <p>With a hands-on, ROI-driven approach, we bring together marketing strategy, performance ads, web development, CRM, automation, and analytics — all under one roof. Our mission is simple: turn ideas into impact and help our clients grow faster, smarter, and sustainably.</p>
-            </div>
-            <div>
-              <h3>MISSION</h3>
-              <p>Our mission is to empower businesses with strategic, tech-enabled marketing solutions that drive measurable growth. We aim to simplify digital execution, maximize ROI, and build scalable systems that help our clients thrive in a fast-evolving digital landscape. We don't just run campaigns — we build momentum for long-term success.</p>
-            </div>
-          </div>
-          <div class="s2-contact">
-            <div class="label">Contact Us-</div>
-            <div>+91 7718569194</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ SLIDE 3 — MARKET INSIGHTS ═══════════ -->
-  <section class="sec-cream slide-3">
-    <a href="/contact/" class="cta-pill blue slide-pill">Request my custom strategy</a>
-    <img class="slide-3-flower" src="/assets/flower-deco.png" alt="" aria-hidden="true" />
-    <div class="wrap">
-      <h2 class="display slide-3-title">Market Insights<span class="ms-circle" aria-hidden="true"></span></h2>
-      <div class="insights-grid">
-        <div>
-          <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 24px; color: var(--navy); margin: 0 0 22px; max-width: 360px; line-height: 1.25;">Why Brands Need Smarter Digital Marketing in 2025</h3>
-          <ul class="insight-points">
-            <li><span class="check-emoji" aria-hidden="true">✅</span><span>70% of buyers research online before making a purchase</span></li>
-            <li><span class="check-emoji" aria-hidden="true">✅</span><span>Cost per lead has increased by 34% YoY — making optimization critical</span></li>
-            <li><span class="check-emoji" aria-hidden="true">✅</span><span>Brands that invest in full-funnel strategies see 30% higher ROAS</span></li>
-          </ul>
-        </div>
-        <div>
-          <div class="chart-subtitle">Future digital marketing maturity rating</div>
-          <img src="/assets/market-chart.png" alt="Bar chart showing digital marketing maturity ratings across categories from Initial to Optimized" class="market-chart-img" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ SLIDE 4 — SERVICES WE OFFER ═══════════ -->
-  <section class="sec-cream slide-4">
-    <div class="wrap">
-      <div class="svc-grid">
-        <div>
-          <h2 class="display slide-4-title">Services<br/><span class="we-wrap">We Offer</span></h2>
-          <p class="lead" style="margin-top: 60px; max-width: 460px;">
-            In a business, there are three factors that determine the selling price of goods and
-            services which include production, marketing, and consumption. Thus, marketing can be
-            regarded as a liaison between producers and consumers.
-          </p>
-        </div>
-        <div>
-          <div class="svc-img" aria-hidden="true">
-            <div class="svc-img-inner">Business consultation</div>
-            <a href="/contact/" class="cta-pill blue svc-img-pill">Request my custom strategy</a>
-          </div>
-          <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; color: var(--navy); margin: 36px 0 18px;">Our Expertise Includes :</h3>
-          <ul class="svc-list">
-            <li>PERFORMANCE MARKETING &amp; LEAD GENERATION</li>
-            <li>CRM, LEADS &amp; AUTOMATION</li>
-            <li>WEB DEVELOPMENT</li>
-            <li>MARKETING STRATEGY &amp; ANALYTICS &amp; DATA</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ SLIDE 5 — APPROACH TO POTENTIAL CUSTOMERS ═══════════ -->
-  <section class="sec-blue slide-5">
-    <a href="/contact/" class="cta-pill slide-pill">Request my custom strategy</a>
-    <div class="wrap">
-      <h2 class="display on-dark slide-5-title">Approach To<br/>Potential <em>Customers</em></h2>
-      <p class="lead on-dark" style="margin-top: 24px; max-width: 1080px;">
-        In a business, there are three factors that determine the selling price of goods and services
-        which include production, marketing, and consumption. Thus, marketing can be regarded as a
-        liaison between producers and consumers.
+    <!-- HERO -->
+    <section class="screen hero">
+      <h1 class="h-title anim">Achieve<br class="m-br"> 6-7X Roi</h1>
+      <p class="h-sub anim">
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l1.6 6.1 5.2-3.4-3.4 5.2 6.1 1.6-6.1 1.6 3.4 5.2-5.2-3.4L12 22.5l-1.6-6.1-5.2 3.4 3.4-5.2L2.5 12l6.1-1.6L5.2 5.2l5.2 3.4z"/></svg>
+        Unlock your business growth with end-to-end marketing &amp; tech solutions
       </p>
-      <div class="approach-grid">
-        <div class="approach-cell">
-          <img class="ico-img" src="/assets/icon-seo.png" alt="" aria-hidden="true" />
-          <div class="lab">Search Engine Optimization</div>
-        </div>
-        <div class="approach-cell">
-          <img class="ico-img" src="/assets/icon-smm.png" alt="" aria-hidden="true" />
-          <div class="lab">Social Media Marketing</div>
-        </div>
-        <div class="approach-cell">
-          <img class="ico-img" src="/assets/icon-web.png" alt="" aria-hidden="true" />
-          <div class="lab">Web Development</div>
-        </div>
-        <div class="approach-cell">
-          <img class="ico-img" src="/assets/icon-ai.png" alt="" aria-hidden="true" />
-          <div class="lab">Generative AI</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="rule"></div>
 
-  <!-- ═══════════ SLIDE 6 — CHALLENGES WE SOLVE ═══════════ -->
-  <section class="sec-cream slide-6">
-    <a href="/contact/" class="cta-pill blue slide-pill">Request my custom strategy</a>
-    <div class="circle-deco lg" style="top: 40px; left: 80px; opacity: 0.55;"></div>
-    <div class="circle-deco md" style="top: 180px; left: 200px; opacity: 0.5;"></div>
-    <div class="slide-6-rail" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="wrap" style="position: relative; z-index: 1;">
-      <h2 class="display" style="text-align: center; margin-bottom: 56px;">Challenges We Solve</h2>
-      <div class="pain-frame">
-        <span class="pin">We Understand Your Pain Points</span>
-        <div class="pain-grid">
-          <div class="pain-cell">
-            <div class="ico">
-              <svg viewBox="0 0 100 88" fill="currentColor" aria-hidden="true">
-                <circle cx="28" cy="22" r="9"/>
-                <circle cx="50" cy="18" r="11"/>
-                <circle cx="72" cy="22" r="9"/>
-                <path d="M10 46 L96 30 L88 22 L98 22 L98 38 L92 30" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M14 50 L26 50 Q28 50 28 52 L28 80 L18 80 Q14 80 14 76 Z"/>
-                <path d="M36 46 L52 46 Q54 46 54 48 L54 80 L40 80 Q36 80 36 76 Z"/>
-                <path d="M62 44 L78 44 Q80 44 80 46 L80 80 L66 80 Q62 80 62 76 Z"/>
-              </svg>
-            </div>
-            <p>Too many leads, but low quality?</p>
+      <!-- footer rides at the bottom of the hero banner (desktop); fixed on mobile -->
+      <div class="botbar">
+        <div class="l">Presented by :<b>AVILASH CHAKRABORTY (A+MARKETING) -<br>DIGITAL MARKETING AND LEAD GENERATION</b></div>
+        <div class="r">Contact Us-<b>+91 7718569194</b></div>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="screen wwa">
+      <div class="wrap">
+        <div class="grid anim">
+          <h2><span class="sm">Who We</span><span class="lg">Are</span></h2>
+          <p class="lead">We are a full-stack digital growth team led by Avilash Chakraborty, dedicated to helping businesses scale using strategic marketing, smart technology, and actionable data. From startups to established brands, we build tailored solutions that deliver real results — not just reports.</p>
+        </div>
+        <hr>
+        <div class="vm">
+          <div class="col vision anim">
+            <h4>VISION</h4>
+            <p>With a hands-on, ROI-driven approach, we bring together marketing strategy, performance ads, web development, CRM, automation, and analytics — all under one roof. Our mission is simple: turn ideas into impact and help our clients grow faster, smarter, and sustainably.</p>
           </div>
-          <div class="pain-cell">
-            <div class="ico">
-              <svg viewBox="0 0 100 88" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 44 A24 24 0 1 0 46 20"/>
-                <polyline points="46 8 46 20 58 20"/>
-                <path d="M78 44 A24 24 0 1 0 54 68"/>
-                <polyline points="54 80 54 68 42 68"/>
-                <rect x="38" y="48" width="6" height="14" fill="currentColor"/>
-                <rect x="48" y="40" width="6" height="22" fill="currentColor"/>
-                <rect x="58" y="32" width="6" height="30" fill="currentColor"/>
-                <polyline points="36 42 50 32 64 24"/>
-                <polyline points="58 24 64 24 64 30"/>
-              </svg>
-            </div>
-            <p>Traffic with no conversions?</p>
-          </div>
-          <div class="pain-cell">
-            <div class="ico">
-              <svg viewBox="0 0 100 88" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M8 44 Q26 22 50 22 Q74 22 92 44 Q82 58 70 64"/>
-                <path d="M92 44 Q74 66 50 66 Q26 66 8 44 Q18 30 30 24"/>
-                <circle cx="50" cy="44" r="11"/>
-                <line x1="14" y1="14" x2="86" y2="78" stroke-width="6"/>
-              </svg>
-            </div>
-            <p>Inconsistent brand visibility and Sales?</p>
+          <div class="col mission anim">
+            <h4>MISSION</h4>
+            <p>Our mission is to empower businesses with strategic, tech-enabled marketing solutions that drive measurable growth. We aim to simplify digital execution, maximize ROI, and build scalable systems that help our clients thrive in a fast-evolving digital landscape. We don't just run campaigns — we build momentum for long-term success.</p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="slide-6-bottom-bar" aria-hidden="true"></div>
-  </section>
+    </section>
 
-  <!-- ═══════════ SLIDE 7 — WHY CHOOSE US? ═══════════ -->
-  <section class="sec-blue slide-7">
-    <a href="/contact/" class="cta-pill slide-pill">Request my custom strategy</a>
-    <div class="wrap">
-      <div class="why-grid">
-        <div>
-          <h2 class="who-title">Why<br/>Choose Us?</h2>
-        </div>
-        <div>
-          <p class="lead on-dark" style="margin-bottom: 56px;">
-            I help businesses grow their online presence, generate leads, improve conversions, and
-            scale revenue through full-stack digital execution.
-          </p>
-          <div class="stats-2x2">
-            <div class="stat-tile"><div class="num">10+</div><div class="lab">Continuous Clients</div></div>
-            <div class="stat-tile"><div class="num">6+</div><div class="lab">Years of Exprience</div></div>
-            <div class="stat-tile"><div class="num">6-7X</div><div class="lab">ROI - 6 Months</div></div>
-            <div class="stat-tile"><div class="num">80%</div><div class="lab">Less manpower and<br/>more productivity.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ═══════════ SLIDE 8 — INDUSTRY WE SUPORT ═══════════ -->
-  <section class="sec-cream slide-8">
-    <a href="/contact/" class="cta-pill blue slide-pill">Request my custom strategy</a>
-    <div class="wrap">
-      <div class="ind-intro">
-        <div>
-          <h2 class="display slide-8-title">Industry<br/><span class="we-wrap">We Suport</span></h2>
-          <p class="lead" style="margin-top: 36px; max-width: 520px;">
-            We've helped brands, startups, and growth-stage businesses turn their digital goals into
-            reality — across industries like D2C, Tech, SaaS, Services, Education, and E-commerce.
-          </p>
-        </div>
-        <div class="ind-manufacturing">
-          <h3>manufacturing</h3>
-          <p><span class="hand">👉</span> Social media growth, b2b lead genegartion, AI-based A/B testing, email marketing — increased engagement by 200%</p>
-        </div>
-      </div>
+<script>
+  // hero text animates in from right as soon as DOM is ready
+  document.addEventListener('DOMContentLoaded',function(){
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      document.querySelectorAll('.hero .anim').forEach(function(el){el.classList.add('in');});
+    });});
+  });
+  // Right -> left float for Who-We-Are (and any future .scroll-anim sections).
+  // TWO things together:
+  //   1) ENTRY (time-based): when a block enters view it slides in from the right and
+  //      fades to FULL opacity, then stays there. Opacity is NOT tied to scroll, so
+  //      bottom content in a one-screen section can never get stuck faded.
+  //   2) DRIFT (scroll-linked): after it's revealed, the block keeps gently moving left
+  //      as you scroll. This never changes opacity.
+  // Header (.topbar) and footer (.botbar) are fixed & untouched.
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var els = Array.prototype.slice.call(document.querySelectorAll('.wwa .anim, .scroll-anim'));
+    if(!els.length) return;
 
-      <div class="ind-grid">
-        <div class="ind-card">
-          <h3>E-commerce Brand (B2B)</h3>
-          <p><span class="hand">👉</span> Created full funnel: Meta + Google Ads, Website, WhatsApp Automation — 3x ROAS in 60 days</p>
-        </div>
-        <div class="ind-card">
-          <h3>SaaS Startup</h3>
-          <p><span class="hand">👉</span> Website revamp, Google Search Campaigns, CRM setup — 40+ B2B leads/month</p>
-        </div>
-        <div class="ind-card">
-          <h3>Health &amp; Wellness Business</h3>
-          <p><span class="hand">👉</span> Built complete D2C strategy, landing pages, and conversion funnels — 25% lower CPA</p>
-        </div>
-        <div class="ind-card">
-          <h3>EdTech / Learning Platform</h3>
-          <p><span class="hand">👉</span> Social media growth, AI-based A/B testing, email marketing — increased engagement by 200%</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    els.forEach(function(el){ el.style.transition='none'; }); // JS-driven, no CSS lag
 
-  <!-- ═══════════ SLIDE 9 — OUR PERFORMANCE ═══════════ -->
-  <section class="sec-cream slide-9">
-    <a href="/contact/" class="cta-pill blue slide-pill">Request my custom strategy</a>
-    <div class="circle-deco lg" style="top: 80px; left: -40px; opacity: 0.55;"></div>
-    <div class="wrap" style="position: relative; z-index: 1;">
-      <h2 class="display slide-9-title"><span class="our-wrap">Our</span> Performance</h2>
-      <div class="perf-grid" style="margin-top: 60px;">
-        <div class="perf-left">
-          <p class="lead" style="margin: 0 0 64px;">We measure success by outcomes, not effort — and our results speak for themselves.</p>
-          <h4>WHY IT WORKS</h4>
-          <ul>
-            <li>DATA-BACKED STRATEGIES</li>
-            <li>WEEKLY PERFORMANCE TRACKING</li>
-            <li>CROSS-CHANNEL EXECUTION</li>
-            <li>DEEP INDUSTRY INSIGHT</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; color: var(--navy); margin: 0 0 22px;">By the Numbers :</h3>
-          <ul class="perf-list">
-            <li><span class="dot"></span><span class="txt">18X-22X RETURN ON AD SPEND FOR D2C AND E-COMMERCE CAMPAIGNS</span></li>
-            <li><span class="dot"></span><span class="txt">500+ QUALIFIED LEADS/MONTH GENERATED THROUGH PERFORMANCE CAMPAIGNS</span></li>
-            <li><span class="dot"></span><span class="txt">40% INCREASE IN WEBSITE CONVERSIONS AFTER LANDING PAGE OPTIMIZATION</span></li>
-            <li><span class="dot"></span><span class="txt">200% GROWTH IN SOCIAL ENGAGEMENT WITHIN 90 DAYS FOR SELECT BRANDS</span></li>
-            <li><span class="dot"></span><span class="txt">70% REDUCTION IN COST-PER-LEAD (CPL) USING TARGETED GOOGLE &amp; META ADS</span></li>
-            <li><span class="dot"></span><span class="txt">FASTER DECISION-MAKING WITH AI-BASED A/B TESTING &amp; PERFORMANCE REVIEWS</span></li>
-            <li><span class="dot"></span><span class="txt">100K+ WHATSAPP MESSAGES DEPLOYED WITH &gt;25% RESPONSE RATE</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+    if(reduce){ els.forEach(function(el){ el.style.opacity=1; el.style.transform='none'; }); return; }
 
-  <!-- ═══════════ SLIDE 10 — MY WORK ═══════════ -->
-  <section class="work-section">
-    <a href="/contact/" class="cta-pill blue slide-pill" style="background: var(--blue-1); color: white;">Request my custom strategy</a>
-    <div class="wrap">
-      <h2 class="work-title">My work</h2>
-      <div class="work-shots">
-        <img src="/assets/work-campaigns-1.png" alt="Google Ads campaign dashboard with budget, bid strategy, CPV, impressions, interactions, and cost columns" loading="lazy" />
-        <img src="/assets/work-campaigns-2.png" alt="Google Ads campaign dashboard with named video campaigns including Custom Intent funnels" loading="lazy" />
-      </div>
-      <div style="text-align: right; margin-top: 28px;">
-        <a href="/case-studies/" class="work-pill">
-          Our Work
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M9 11 L9 17 Q9 18 10 18 L11 18 Q12 18 12 17 L12 13 Q12 12 13 12 L14 12 Q15 12 15 13 L15 17 Q15 18 16 18 L17 18 Q18 18 18 17 L18 14 Q18 13 19 13 L20 13 Q21 13 21 14 L21 19 Q21 22 18 22 L12 22 Q9 22 7 20 L4 14 Q3 12 6 12 L7 12 Q9 12 9 14 Z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+    var ENTER=130;   // px the block starts to the right
+    var DRIFT=40;    // px of gentle leftward scroll-drift after reveal
+    var DUR=800;     // ms entry duration
+    var STAG=150;    // ms stagger between stacked blocks
+    function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
 
-  <!-- ═══════════ SLIDE 11 — WHAT'S NEXT FOR US? ═══════════ -->
-  <section class="sec-blue slide-11">
-    <div class="wrap">
-      <div class="who-grid">
-        <h2 class="who-title">What's<br/>Next for<br/>Us?</h2>
-        <div>
-          <div class="next-block">
-            <div class="next-row">
-              <div>
-                <h4>EXPANDING OUR CAPABILITIES</h4>
-                <ol>
-                  <li>Integrating AI-driven campaign management for faster, smarter optimization</li>
-                  <li>Offering industry-specific growth packages for D2C, SaaS, and E-commerce</li>
-                  <li>Building automation-first CRM systems tailored to SMB needs</li>
-                </ol>
-              </div>
-              <img class="nx-img" src="/assets/icon-next-1.png" alt="" aria-hidden="true" />
-            </div>
-            <div class="next-row">
-              <div>
-                <h4>DEEPENING CLIENT PARTNERSHIPS</h4>
-                <ul>
-                  <li>Launching a retainer-based growth model for long-term ROI</li>
-                  <li>Providing monthly strategic consulting alongside execution</li>
-                  <li>Co-creating custom dashboards for transparency and control</li>
-                </ul>
-              </div>
-              <img class="nx-img" src="/assets/icon-next-2.png" alt="" aria-hidden="true" />
-            </div>
-            <div class="next-row">
-              <div>
-                <h4>SCALING OUR REACH</h4>
-                <ul>
-                  <li>Entering new markets and niches with focused campaigns</li>
-                  <li>Collaborating with agencies &amp; partners for global delivery</li>
-                  <li>Investing in training and certification programs to upskill our internal teams</li>
-                </ul>
-              </div>
-              <img class="nx-img" src="/assets/icon-next-3.png" alt="" aria-hidden="true" />
-            </div>
-          </div>
-          <p class="lead on-dark slide-11-foot">
-            We're not just service providers — we're growth partners. Here's how we plan to scale
-            impact for our clients and ourselves:
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    els.forEach(function(el,i){ el._enter=0; el._t0=null; el._idx=i; });
 
-  <!-- ═══════════ SLIDE 12 — RECOMMENDATIONS ═══════════ -->
-  <section class="sec-blue slide-12">
-    <a href="/contact/" class="cta-pill slide-pill">Request my custom strategy</a>
-    <div class="wrap">
-      <h2 class="display on-dark slide-12-title">Recommendations</h2>
-      <p class="lead on-dark">What's our customer says about us.</p>
-
-      <div class="rec-grid">
-        <div class="rec-col">
-          <article class="rec-card">
-            <div class="rec-head">
-              <div class="rec-avatar">AK</div>
-              <div class="rec-meta">
-                <div class="nm">Arvinder Kaur Banga <span class="deg">1st</span></div>
-                <div class="role">Strategic Affairs Expert | Global Communications &amp; Content Specialist | 20+ Years Shaping Narratives Across Media, Policy &amp; International Engagement</div>
-                <div class="date">March 20, 2026, Avilash was Arvinder Kaur's client</div>
-              </div>
-            </div>
-            <div class="rec-body">
-              I have had the opportunity to work closely with Avilash over the last few months on social media marketing initiatives, and it has been a great experience. What stands out most is his thorough understanding of the subject and his structured approach to execution.<br/><br/>
-              Avilash brings clarity to strategy, pays close attention to detail, and ensures that campaigns are not just creative but also aligned with broader business objectives. His ability to break down complex … <a href="#" style="color: var(--blue-1);">more</a>
-            </div>
-          </article>
-
-          <article class="rec-card">
-            <div class="rec-head">
-              <div class="rec-avatar">BM</div>
-              <div class="rec-meta">
-                <div class="nm">Basant Mahato <span class="deg">1st</span></div>
-                <div class="role">Founder- RBSH Studio Pvt. Ltd.</div>
-                <div class="date">March 20, 2026, Basant worked with Avilash on the same team</div>
-              </div>
-            </div>
-            <div class="rec-body">
-              Avilash is a powerhouse at blending sales with digital strategy. He knows SEO and SEM inside out, but it's not just about getting traffic; it's about turning that into real conversions and long-term brand growth. He can glance at a P&amp;L and spot exactly which digital tactics will boost ROI big time. Whether tweaking search rankings or ramping up paid ads, he gets results that actually hit the bottom line. Any brand looking to scale would be smart to have him on board.
-            </div>
-          </article>
-        </div>
-
-        <div class="rec-col">
-          <article class="rec-card">
-            <div class="rec-head">
-              <div class="rec-avatar">RK</div>
-              <div class="rec-meta">
-                <div class="nm">Rajat Kumar Jha <span class="deg">2nd</span></div>
-                <div class="role">Glucks Wealth | Glucks Finance | GlucksCare Pharmaceuticals | RBSH Studio</div>
-                <div class="date">February 9, 2025, Rajat Kumar was Avilash's client</div>
-              </div>
-            </div>
-            <div class="rec-body">
-              I've had the pleasure of working with Avilash Chakraborty at Glucks Wealth, and I can confidently say that he is an exceptional Inside Sales Specialist with a deep understanding of the financial industry. From market research and lead generation to closing high-value deals, Avilash plays a crucial role in driving revenue and building strong client relationships.<br/><br/>
-              What truly sets Avilash apart is his ability to identify the right opportunities, communicate complex investment solutions in a simple manner, and guide clients toward smart financial decisions. His proactive approach, persistence, and ability to navigate challenges make him a key asset … <a href="#" style="color: var(--blue-1);">see more</a>
-            </div>
-          </article>
-
-          <article class="rec-card">
-            <div class="rec-head">
-              <div class="rec-avatar">MS</div>
-              <div class="rec-meta">
-                <div class="nm">Mahesh Singla <span class="deg">2nd</span></div>
-                <div class="role">4+ years of Experience | Full Stack Developer | Wordpress | Lead Generation (Organic And Paid)</div>
-                <div class="date">October 13, 2023, Mahesh was Avilash's client</div>
-              </div>
-            </div>
-            <div class="rec-body">
-              I've had the privilege of working with Avilash for three years. He is a true digital marketing expert. Avilash consistently delivers exceptional results, using a combination of creative and data-driven strategies to exceed our goals. He is not only a skilled marketer but also a great communicator and collaborator. I highly recommend Avilash to any team seeking a digital marketing expert. Connect with him to enhance your marketing efforts.<br/><br/>
-              Avilash's dedication to staying current with the ever-changing digital landscape is truly impressive.
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ SLIDE 13 — FINAL CTA ═══════════ -->
-  <section class="final-cta">
-    <div class="badge-box">
-      <span class="a-plus">A<sup>+</sup></span>
-      <span class="sep"></span>
-      <span class="name">AVILASH<br/>CHAKRABORTY</span>
-    </div>
-    <h2>Let's Create Something<br/>Amazing Together</h2>
-    <a href="/contact/" class="cta-pill blue final-pill">Request my custom strategy</a>
-    <div class="gradline"></div>
-    <div class="final-cta-row">
-      <div>
-        <div class="label">Contact Us :</div>
-        <div class="val">+91 7718569194</div>
-      </div>
-      <div style="text-align:right;">
-        <div class="label">Reach out to us at :</div>
-        <div class="val">AVILASH CHAKRABORTY</div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    function frame(now){
+      var vh = window.innerHeight;
+      // arm the entry the moment a block is visible (any part on screen)
+      els.forEach(function(el){
+        if(el._t0==null){
+          var r=el.getBoundingClientRect();
+          if(r.top < vh && r.bottom > 0){ el._t0 = now + el._idx*STAG; }
+        }
       });
-    }, { rootMargin: '0px 0px -80px 0px' });
-    document.querySelectorAll('section').forEach(function (el) {
-      el.classList.add('reveal'); io.observe(el);
-    });
-  </script>
+      els.forEach(function(el){
+        if(el._t0!=null){
+          var e=(now - el._t0)/DUR;
+          el._enter = e<=0?0:(e>=1?1:easeOut(e));   // 0 -> 1 over time, then holds
+        }
+        var baseX=(1 - el._enter)*ENTER;            // right -> left entry
+        var r=el.getBoundingClientRect();
+        var center=r.top + r.height/2;
+        var rel=(vh/2 - center)/vh;                 // position-based, continuous
+        var drift=rel * DRIFT * el._enter;          // scroll-linked drift (after reveal)
+        el.style.transform='translateX('+(baseX - drift).toFixed(1)+'px)';
+        el.style.opacity = el._enter;               // opacity = time only, never stuck
+      });
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+</script>
 </body>
 </html>
