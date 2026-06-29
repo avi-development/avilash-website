@@ -51,33 +51,26 @@
   .hero .rule,.hero .h-foot{display:none}   /* baked into desktop bg */
 
   /* ---------- WHO WE ARE ---------- */
-  /* Sticky bg behind keeps the hero image (with Avilash on the right)
-     pinned, so the WWA text overlays the same backdrop. Constrain the
-     content to the LEFT half so it never runs over Avilash's face,
-     and push the whole block lower in the section so it sits below
-     the face vertically too. */
   .wwa{display:flex;align-items:flex-start}
-  .wwa .wrap{max-width:1280px;margin:0 auto;padding:42vh 6.6% 8vh;width:100%}
-  .wwa .grid{display:grid;grid-template-columns:auto 1fr;gap:1.4vw 3vw;align-items:center;max-width:50%}
+  .wwa .wrap{max-width:1280px;margin:0 auto;padding:7vw 6.6% 10vw;width:100%;transform:translateX(-5vw)}
+  .wwa .grid{display:grid;grid-template-columns:auto 1fr;gap:1.4vw 3vw;align-items:center;max-width:62%}
   .wwa h2{font-family:'Poppins';font-weight:800;letter-spacing:-.02em;line-height:.84}
   .wwa h2 .sm{display:block;font-size:3vw;font-weight:700}
   .wwa h2 .lg{display:block;font-size:5.6vw}
-  .wwa .lead{font-size:1vw;line-height:1.5;font-weight:500;color:#eef3ff;max-width:46ch}
-  .wwa hr{border:none;height:1px;background:rgba(255,255,255,.45);margin:1.8vw 0;max-width:50%}
-  .wwa .vm{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;max-width:50%}
+  .wwa .lead{font-size:1vw;line-height:1.5;font-weight:500;color:#eef3ff}
+  .wwa hr{border:none;height:1px;background:rgba(255,255,255,.45);margin:1.8vw 0;max-width:62%}
+  .wwa .vm{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;max-width:62%}
   .wwa .vm .col.mission{padding-left:3vw;border-left:1px solid rgba(255,255,255,.45)}
   .wwa .vm h4{font-family:'Poppins';font-weight:700;font-size:1.25vw;color:var(--gold);letter-spacing:.04em;margin-bottom:.7vw}
   .wwa .vm p{font-size:.8vw;line-height:1.5;color:#eaf0ff}
   .wwa .foot{display:none}
   /* desktop footer — bg is now clean, so render Presented by + Contact as a FIXED bar */
-  /* Moderate min floors (11/12px) so the footer is readable on
-     tablet portrait widths without bloating into multi-line wraps. */
   .botbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;
     justify-content:space-between;align-items:flex-end;gap:4vw;padding:0 6.6% 2.4vw}
-  .botbar .l{font-size:max(11px,.95vw);line-height:1.5;letter-spacing:.02em}
-  .botbar .l b{display:block;font-weight:700;font-size:max(12px,1.1vw);margin-top:.45vw;letter-spacing:.03em}
-  .botbar .r{font-size:max(11px,.95vw);line-height:1.5;text-align:right}
-  .botbar .r b{display:block;font-weight:700;font-size:max(12px,1.1vw);margin-top:.4vw}
+  .botbar .l{font-size:.95vw;line-height:1.55;letter-spacing:.02em}
+  .botbar .l b{display:block;font-weight:700;font-size:1.1vw;margin-top:.45vw;letter-spacing:.03em}
+  .botbar .r{font-size:.95vw;line-height:1.55;text-align:right}
+  .botbar .r b{display:block;font-weight:700;font-size:1.1vw;margin-top:.4vw}
   .botbar::before{content:'';position:absolute;left:6.6%;right:6.6%;top:-1.8vw;bottom:auto;height:1px;background:rgba(255,255,255,.4)}
 
   /* ---------- ANIMATION: text slides IN FROM RIGHT (right -> left) ---------- */
@@ -91,7 +84,7 @@
   .wwa .vm .col.vision.anim{transition-delay:.30s}
 
   /* ============================================================ MOBILE ============================================================ */
-  @media (max-width:767px){
+  @media (max-width:700px){
     .m-br{display:inline}
     .stage-bg{background:url('hero-mobile.webp') center bottom / cover no-repeat,
                          linear-gradient(160deg,var(--b1),var(--b2))}
@@ -107,37 +100,33 @@
     .hero .h-sub .star{width:clamp(16px,4.6vw,22px);height:clamp(16px,4.6vw,22px)}
     .hero .rule{display:block;position:absolute;left:6%;right:6%;top:85.5%;height:1px;background:rgba(255,255,255,.55)}
     .hero .h-foot{display:flex;position:absolute;left:6%;right:6%;top:89%;justify-content:space-between;align-items:flex-start;gap:3vw}
-    .hero .h-foot .l{font-size:clamp(9px,2.4vw,11px);line-height:1.4}
-    .hero .h-foot .l b{display:block;font-weight:700;font-size:clamp(10px,2.6vw,12px)}
-    .hero .h-foot .r{font-size:clamp(9px,2.4vw,11px);text-align:right;white-space:nowrap}
-    .hero .h-foot .r b{display:block;font-weight:700;font-size:clamp(10px,2.6vw,12px);margin-top:.4vw;white-space:nowrap}
+    .hero .h-foot .l{font-size:clamp(8px,2.1vw,12px);line-height:1.45}
+    .hero .h-foot .l b{display:block;font-weight:700}
+    .hero .h-foot .r{font-size:clamp(8px,2.3vw,13px);text-align:right}
+    .hero .h-foot .r b{display:block;font-weight:700;margin-top:.6vw}
 
-    /* who we are — intro pushed down a bit per Avilash so the headline
-       sits below the topbar/logo area, not crammed under it. MISSION/
-       VISION still drop to the very bottom. */
+    /* who we are — intro up top, MISSION/VISION dropped to the very bottom */
     .wwa{min-height:100vh;display:flex;align-items:stretch;padding:0}
-    .wwa .wrap{display:flex;flex-direction:column;min-height:100vh;padding:18vh 6% 18vh;width:100%}
-    .wwa .grid{grid-template-columns:1fr;gap:0;max-width:none}
+    .wwa .wrap{display:flex;flex-direction:column;min-height:100vh;padding:7vh 6% 18vh;width:100%;transform:none}
+    .wwa .grid{grid-template-columns:1fr;gap:0;max-width:none;margin-top:auto}
     .wwa h2 .sm{font-size:clamp(16px,5.4vw,26px)}
     .wwa h2 .lg{font-size:clamp(30px,10vw,52px)}
     .wwa hr{max-width:none;margin:1.6vh 0}
     .wwa .lead{font-size:clamp(11px,3vw,14px);line-height:1.4;max-width:82%;margin-top:1.4vh}
-    .wwa .vm{grid-template-columns:1fr;max-width:none;gap:0;margin-top:auto}
+    .wwa .vm{grid-template-columns:1fr;max-width:none;gap:0;margin-top:2.5vh}
     .wwa .vm .col{margin-top:2vh}
     .wwa .vm .col.mission{order:-1;padding-left:0;border-left:none}
     .wwa .vm h4{font-size:clamp(13px,3.9vw,18px);margin-bottom:.8vh}
     .wwa .vm p{font-size:clamp(10px,2.7vw,13px);line-height:1.4;max-width:90%}
 
-    /* fixed bottom bar (presented + contact) — moderate sizes so
-       the long name "AVILASH CHAKRABORTY (A+MARKETING) -" doesn't
-       wrap to 3+ lines and the phone number stays on one line. */
+    /* fixed bottom bar (presented + contact) */
     .botbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;
       justify-content:space-between;align-items:flex-end;gap:4vw;padding:0 6% 2.4vh}
     .botbar::before{display:none}
-    .botbar .l{font-size:clamp(9px,2.4vw,11px);line-height:1.4}
-    .botbar .l b{display:block;font-weight:700;font-size:clamp(10px,2.6vw,12px);margin-top:.4vh}
-    .botbar .r{font-size:clamp(9px,2.4vw,11px);text-align:right;line-height:1.4;white-space:nowrap}
-    .botbar .r b{display:block;font-weight:700;font-size:clamp(10px,2.6vw,12px);margin-top:.4vh;white-space:nowrap}
+    .botbar .l{font-size:clamp(7px,1.9vw,9.5px);line-height:1.4}
+    .botbar .l b{display:block;font-weight:700;font-size:clamp(8px,2.3vw,11px)}
+    .botbar .r{font-size:clamp(7px,1.9vw,9.5px);text-align:right;line-height:1.4}
+    .botbar .r b{display:block;font-weight:700;font-size:clamp(8px,2.3vw,11px);margin-top:.5vh}
     .wwa .foot .l b{display:block;font-weight:700}
     .wwa .foot .l.r{text-align:left}
   }
